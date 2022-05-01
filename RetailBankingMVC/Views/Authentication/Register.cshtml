@@ -1,0 +1,53 @@
+﻿
+@model RetailBankingMVC.Models.AuthenticationModels.RegisterData;
+@{ ViewData["Title"] = "register";
+    Layout = null;
+
+    var returnUrl = @Context.Request.Query["returnUrl"]; }
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="~/css/LoginStylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/regular.min.css">*@
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <div class="card">
+            <h1 class="card-title">Register</h1>
+            <small class="card-subtitle">Enter your credentials To Register</small>
+            <form class="card-form" asp-action="Register" asp-route-returnUrl="@returnUrl">
+                <label style="color:black" for="email">Email Id</label>
+                <div class="card-input-container username">
+                    <input asp-for="Email" placeholder="Enter your Email" id="email">
+                    <span asp-validation-for="Email" class="text-danger" style="color:red"></span>
+                </div>
+                <label style="color:black" for="password">Password</label>
+                <div class="card-input-container password">
+
+                    <input asp-for="Password" type="password" placeholder="Enter your password" id="password">
+                    <span asp-validation-for="Password" class="text-danger" style="color:red"></span>
+                </div>
+                <label style="color:black" for="password">Re Enter Password</label>
+                <div class="card-input-container password">
+
+                    <input asp-for="ReEnterPassWord" type="password" placeholder="Enter your password" id="password">
+                    <span asp-validation-for="ReEnterPassWord" class="text-danger"></span>
+                </div>
+                @ViewBag.Errormessage
+                <input type="submit" value="Register" class="card-button" />
+                <input type="button"
+                       value="Login" class="card-button"
+                       onclick="location.href='@Url.Action("Login", "Authentication" )'" />
+            </form>
+           
+        </div>
+    </div>
+</body>
+</html>
+

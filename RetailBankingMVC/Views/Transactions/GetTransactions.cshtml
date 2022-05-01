@@ -1,0 +1,51 @@
+﻿
+@model RetailBankingMVC.Models.AccountModels.StatementRequest;
+@{ ViewData["Title"] = "GetAccountStatementView";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h3 style="text-align:center">Enter Start Date And End date to See Transactions between the dates</h3>
+            <h1 style="text-align:center">OR</h1>
+            <h3 style="text-align:center">Press Submit Without Entering to see Transactions of last one month.</h3>
+            <form asp-action="GetTransactions" asp-controller="Transactions" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @Html.HiddenFor(m => m.accountId)
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="FromDate" class="control-label"></label>
+                            <input asp-for="FromDate" type="date" class="form-control" />
+                            <span asp-validation-for="FromDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="ToDate" class="control-label"></label>
+                            <input asp-for="ToDate"  type="date" class="form-control" />
+                            <span asp-validation-for="ToDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <button type="submit" value="Save" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <a asp-action="GetAllCustomers" asp-controller="Customers" class="btn btn-danger float-right">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,21 @@
+﻿
+@model RetailBankingMVC.Models.CustomerModels.CustomerCreationStatus;
+@{ ViewData["Title"] = "CreateSuccess";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card bg-light">
+                <div class="card-header bg-success">
+                    <h5>Customer Account Created Successfully</h5>
+                </div>
+                <div class="card-body">
+                    <h5>Customer Id: @Model.CustomerId</h5>
+                    <p>Status : @Model.StatusMessage</p>
+                    <a asp-action="Employee" asp-controller="Employees" class="btn btn-danger float-right">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

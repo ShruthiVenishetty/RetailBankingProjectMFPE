@@ -1,0 +1,88 @@
+﻿
+@model IEnumerable<RetailBankingMVC.Models.AccountModels.Statement>
+@{ ViewData["Title"] = "View Account Statement";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="card">
+                <div class="card-header bg-success">
+                    <h5>Account statement</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.Count() != 0)
+                    {
+        <table class="table">
+            <thead>
+                <tr>
+                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatementId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AccountId)
+                    </th>
+                   
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.ValueDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Withdrawl)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Deposit)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ClosingBalance)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+<tr>
+   
+    <td>
+        @Html.DisplayFor(modelItem => item.StatementId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AccountId)
+    </td>
+  
+    <td>
+        @Html.DisplayFor(modelItem => item.ValueDate)
+    </td>
+    <td>
+        ₹ @Html.DisplayFor(modelItem => item.Withdrawl)
+    </td>
+    <td>
+        ₹ @Html.DisplayFor(modelItem => item.Deposit)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ClosingBalance)
+    </td>
+</tr>
+}
+            </tbody>
+        </table> }
+    else
+    {
+<div class="bg-warning">
+    <p>No any accound statement found </p>
+    <p>@ViewBag.Message</p>
+</div>}
+                </div>
+                <div class="card-footer bg-light">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

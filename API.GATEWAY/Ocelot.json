@@ -1,0 +1,140 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Authenticate",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "UpstreamPathTemplate": "/AuthenticationService"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Authenticate/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "UpstreamPathTemplate": "/AuthenticationService/{everything}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Customers",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "UpstreamPathTemplate": "/CustomerService/Customers"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Customers/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "UpstreamPathTemplate": "/CustomerService/Customers/{everything}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Accounts",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8002
+        }
+      ],
+      "UpstreamPathTemplate": "/AccountService/Acccounts"
+    },
+    {
+      "DownstreamPathTemplate": "/api/AccountTransactions",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8002
+        }
+      ],
+      "UpstreamPathTemplate": "/AccountService/AcccountTransactions"
+    },
+    {
+      "DownstreamPathTemplate": "/api/AccountTransactions/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8002
+        }
+      ],
+      "UpstreamPathTemplate": "/AccountService/AcccountTransactions/{everything}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Accounts/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8002
+        }
+      ],
+      "UpstreamPathTemplate": "/AccountService/Acccounts/{everything}"
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Transactions",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8003
+        }
+      ],
+      "UpstreamPathTemplate": "/TransactionService/Transactions"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Transactions/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8003
+        }
+      ],
+      "UpstreamPathTemplate": "/TransactionService/Transactions/{everything}"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Rules",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8004
+        }
+      ],
+      "UpstreamPathTemplate": "/RulesService/Rules"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Rules/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8004
+        }
+      ],
+      "UpstreamPathTemplate": "/RulesService/Rules/{everything}"
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:9000"
+  }
+}

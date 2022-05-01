@@ -1,0 +1,80 @@
+﻿
+@model RetailBankingMVC.Models.CustomerModels.Customer;
+@{ ViewData["Title"] = "Create Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<div class="container" style="margin-top:8%">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form asp-action="CreateCustomer" asp-controller="Customers" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="CustomerId" class="control-label"></label>
+                            <input asp-for="CustomerId" class="form-control" />
+                            <span asp-validation-for="CustomerId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+
+                        <div class="form-group">
+                            <label asp-for="PAN_Number" class="control-label"></label>
+                            <input asp-for="PAN_Number" class="form-control" />
+                            <span asp-validation-for="PAN_Number" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="DOB" class="control-label"></label>
+                            <input asp-for="DOB" class="form-control" />
+                            <span asp-validation-for="DOB" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label asp-for="Address" class="control-label"></label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <a asp-action="Employee" asp-controller="Employees" class="btn btn-danger float-right">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

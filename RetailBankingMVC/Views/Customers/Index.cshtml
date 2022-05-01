@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNetCore.Http
+
+
+
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+@ViewBag.CheckJobMessage
+
+<h5>Hi, Welcome <strong>@Context.Session.GetString("email")</strong>, You are logged in as <strong>Customer</strong></h5>
+
+
+<div style="padding:10px;padding-left:30%;padding-right:400px;text-align:center">
+    <div class="cards1">
+        <i class="uil-user"></i>
+        <h3></h3>
+        <div class="data-container">
+
+            <b>   <a style="text-decoration:none;color:black" class="btns" id="#a_noDec" asp-area="" asp-controller="Customers" asp-action="GetCustomerDetails" asp-route-customerId="@Context.Session.GetInt32("userId")">View Your Details</a></b>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@model IEnumerable<RetailBankingMVC.Models.AccountModels.Account>
+@{ ViewData["Title"] = "Customer Account Details";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="cardsss">
+                <div class="card-header bg-dark text-white" style="text-align:center"><b>Customer Account Details</b></div>
+                <div class="card-body">
+                     @if (Model.Count() == 0)
+                     {
+                                <div class="alert alert-warning">
+                                    <p>No any account has been associated with this customer</p>
+                                </div> 
+                      }
+                     else
+                     {
+                <div class="row">
+                    <div class="col-2">
+                        <h5>Account Type.</h5>
+                    </div>
+                    <div class="col-2">
+                        <h5>Account No.</h5>
+                    </div>
+                    <div class="col-2">
+                        <h5>Balance</h5>
+                    </div>
+                   
+                        @if (Context.Session.GetString("IsEmployee") == "True")
+                        {<div class="col-1">
+
+                            </div>}
+                        @if (Context.Session.GetString("IsCustomer") == "True")
+                        {
+                            <div class="col-1">
+
+                            </div>
+                             <div class="col-1">
+                             </div>
+                             <div class="col-1">
+                             </div>
+                             <div class="col-1">
+                             </div>
+                     }
+                    </div>
+
+                 
+
+               
+                    @foreach (var acc in Model)
+                    {
+                <hr />
+                                    <div class="row">
+                                        <div class="col-2">
+                                            @if (acc.AccountTypeCode == 200)
+                                            {
+                                                 <h5>Savings</h5>
+                                            }
+                                            else if (acc.AccountTypeCode == 201)
+                                            {
+                                                <h5>Current</h5>
+                                            }
+
+                                        </div>
+                                        <div class="col-2">
+                                            <h5>@acc.AccountId</h5>
+                                        </div>
+                                        <div class="col-2">
+                                            <h5>₹ @acc.CurrentBalance</h5>
+                                        </div>
+                                        <div class="row" style="justify-content:space-evenly ;margin-left: 45%;margin-top: -2%;">
+                                            @if (Context.Session.GetString("IsEmployee") == "True")
+                                            {<div class="col-1 ">
+                                                    <a asp-action="GetTransactions" asp-controller="Transactions" asp-route-accountId="@acc.AccountId" class="a3">
+                                                        <img src="~/images/acntstmt.png" class="new3" />Account Transactions
+                                                    </a>
+                                                </div>
+                                                }
+
+                                            @if (Context.Session.GetString("IsCustomer") == "True")
+                                            {
+                                                    <div class="col-1 ">
+                                                        <a asp-action="GetTransactions" asp-controller="Transactions" asp-route-accountId="@acc.AccountId" class="a3">
+                                                            <img src="~/images/acntstmt.png" class="new3" />Account Transactions
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-1 ">
+                                                         <a asp-action="PerformTransactions" asp-controller="Transactions" asp-route-accountId="@acc.AccountId" asp-route-transactionMode="Deposit" class="a3">
+                                                              <img src="~/images/deposit.png" class="new3" />Deposit Ammount
+                                                         </a>
+                                                    </div>
+                                                    <div class="col-1 ">
+                                                         <a asp-action="PerformTransactions" asp-controller="Transactions" asp-route-accountId="@acc.AccountId" asp-route-transactionMode="Withdraw" class="a3">
+                                                               <img src="~/images/withdraw.png" class="new3" />Withdraw Ammount
+                                                          </a>
+                                                     </div>
+                                                     <div class="col-1">
+                                                           <a asp-action="PerformTransactions" asp-controller="Transactions" asp-route-accountId="@acc.AccountId" asp-route-transactionMode="Transfer" class="a4">
+                                                                 <big class="fa fa-exchange-alt text-success" style="font-size: 37px; margin-left: 10px;filter: opacity(0.5) drop-shadow(0 0 0 yellow);" aria-hidden="true"></big>
+                                                                           Transfer
+                                                           </a>
+                                                     </div>
+                                             }
+                                        </div>
+
+                                    </div>}
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

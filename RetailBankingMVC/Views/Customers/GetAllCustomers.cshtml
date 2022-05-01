@@ -1,0 +1,78 @@
+﻿
+@using Microsoft.AspNetCore.Http
+@model IEnumerable<RetailBankingMVC.Models.CustomerModels.Customer>
+@{ 
+    ViewData["Title"] = "Get Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<div class="container" style="margin-bottom:60px;">
+    <div class="row">
+        <div class="col-md-11 offset-md-1">
+            <div class="cardsss col-md-offset-2 bg-light">
+                <div class="card-header bg-dark text-white" style="text-align:center"><b>Customers Details</b></div>
+                <div class="card-body">
+                    <table class="table table-striped  table-responsive table-hover " cellspacing="100" style="margin-left:80px;column-gap:20px">
+                        @if (Model.Count() == 0)
+                        {
+                                <tr class="alert alert-warning">
+                                    <td>No any customer has been created yet!</td>
+                                </tr> 
+                        }
+                        else
+                        {
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CustomerId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Address)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DOB)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PAN_Number)
+                                    </th>
+                                    <th>Action</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var customer in Model)
+                                {
+                                        <tr>
+                                            <td>
+                                                @customer.CustomerId
+                                            </td>
+                                            <td>
+                                                @customer.Name
+                                            </td>
+                                            <td>
+                                                @customer.Address
+                                            </td>
+                                            <td>
+                                                @customer.DOB
+                                            </td>
+                                            <td>
+                                                @customer.PAN_Number
+                                            </td>
+                                            <td>
+                                                <a asp-action="GetCustomerAccount" asp-controller="Accounts" asp-route-customerId="@customer.CustomerId" class="btn btn-primary">Accounts</a>
+                                            </td>
+                                          
+                                                                    
+                                        </tr>
+                                 }
+                            </tbody>}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

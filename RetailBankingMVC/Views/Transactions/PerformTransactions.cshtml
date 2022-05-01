@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RetailBankingMVC.Models.TransactionModels.TransactionRequest;
+
+@{ViewData["Title"] = " Perform Transaction";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="cardsss">
+                <div class="card-header bg-dark">
+                    <h5 class="text-center text-white">@Html.DisplayFor(m => m.TransactionMode) Amount</h5>
+                </div>
+                <div style="text-align:center">
+                    <span class="text-danger" >@ViewBag.Message</span>
+                </div>
+                <div class="card-body">
+                    <form asp-action="PerformTransactions" asp-controller="Transactions" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        @Html.HiddenFor(m => m.AccountId)
+                        @Html.HiddenFor(m => m.CustomerId)
+                        @Html.HiddenFor(m=>m.TransactionMode)
+                        <div class="form-group">
+                            <label asp-for="Amount" class="control-label">Amount ₹ </label>
+                            <input asp-for="Amount" class="form-control" />
+                            <span asp-validation-for="Amount" class="text-danger"></span>
+                        </div>
+                        @if(@Model.TransactionMode== "Transfer")
+                        {
+                        <div class="form-group">
+                            <label asp-for="CounterPartyId" class="control-label">Enter Account Number To Transfer</label>
+                            <input asp-for="CounterPartyId" class="form-control" />
+                            <span asp-validation-for="CounterPartyId" class="text-danger"></span>
+                        </div>
+
+                        }
+                    <div class="form-group">
+                        <label asp-for="PaymentMethod" class="control-label">Payment Method</label>
+                        @Html.DropDownListFor(m => m.PaymentMethod,
+          new SelectList(Enum.GetValues(typeof(RetailBankingMVC.Models.TransactionModels.PaymentMethods))),
+          "Select Payment Method")
+                        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                    </div>
+                        <div class="form-group">
+                            <label asp-for="TransactionType" class="control-label">Transaction Type</label>
+                            @Html.DropDownListFor(m => m.TransactionType,
+              new SelectList(Enum.GetValues(typeof(RetailBankingMVC.Models.TransactionModels.TransactionTypes))),
+              "Select Payment Method")
+                            <span asp-validation-for="TransactionType" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" style="margin-left:40%">@Html.DisplayFor(m => m.TransactionMode)</button>
+                            <a asp-action="GetCustomerAccount" asp-controller="Accounts" asp-route-customerId="@Model.CustomerId" class="btn btn-info">Back</a>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

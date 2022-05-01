@@ -1,0 +1,37 @@
+﻿
+@using Microsoft.AspNetCore.Http;
+@{ ViewData["Title"] = "Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div id="center">
+    <div style="margin-left: auto;">
+        <div class="col">
+            <div style="padding:10px;padding-left:30%;padding-right:400px;text-align:center">
+                <div class="cards1">
+                    <i class="uil-eye"></i>
+                    <h3></h3>
+
+                    <div class="data-container">
+
+                        <b>   <a style="text-decoration:none;color:black" class="btns" id="#a_noDec" asp-controller="Customers" asp-action="CreateCustomer"> Create Customer</a></b>
+
+                    </div>
+
+                </div>
+            </div>
+            <div style="padding:10px;padding-left:30%;padding-right:400px;text-align:center">
+                <div class="cards1">
+                    <i class="uil-user"></i>
+                    <h3></h3>
+                    <div class="data-container">
+
+                        <b>   <a style="text-decoration:none;color:black" class="btns" id="#a_noDec" asp-area="" asp-controller="Customers" asp-action="GetAllCustomers">Customer List</a></b>
+
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</div>

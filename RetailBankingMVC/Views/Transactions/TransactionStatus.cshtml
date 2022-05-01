@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model RetailBankingMVC.Models.TransactionModels.TransactionStatus;
+@{ ViewData["Title"] = "Transaction Status";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="cardsss">
+                <div class="card-header bg-success">
+                    <h5 class="text-center text-white">Transaction Status</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model != null)
+                    {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            
+                            <th>
+                                @Html.DisplayNameFor(model => model.AccountId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CustomerId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TStatusMessage)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.OpeningBalance)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ClosingBalance)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => modelItem.AccountId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => modelItem.CustomerId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => modelItem.TStatusMessage)
+                            </td>
+                            <td>
+                                ₹ @Html.DisplayFor(modelItem => modelItem.OpeningBalance)
+                            </td>
+                            <td>
+                                ₹ @Html.DisplayFor(modelItem => modelItem.ClosingBalance)
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+                              }
+                            else
+                            {
+                <div class="bg-warning">
+                    <p>No any transaction status found</p>
+                </div>}
+                    <td>
+                        <a asp-action="GetCustomerAccount" asp-controller="Accounts" asp-route-customerId="@Model.CustomerId" class="btn btn-info text-center">Back</a>
+                    </td>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
